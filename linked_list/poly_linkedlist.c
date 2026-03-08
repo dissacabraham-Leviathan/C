@@ -96,31 +96,32 @@ void print_equation(equation *eq)
     int first_time = 1;
     while(curr != NULL) 
     {
-        int c = curr->coeff;
-        int p = curr->power;
+        int coefficient = curr->coeff;
+        int power = curr->power;
 
         if(!first_time)
          {
-            printf(c > 0 ? " + " : " - ");
-            c = (c < 0) ? -c : c;
+            printf(coefficient > 0 ? " + " : " - ");
+            coefficient = (coefficient < 0) ? -coefficient : coefficient;
          }
-         else if (c < 0)
+         else if (coefficient < 0)
           {
             printf("-");
-            c = -c;
+            coefficient = -coefficient;
           }
         first_time = 0;
 
-        if(p == 0) printf("%d",c);
-        else if(p == 1) printf("%dx",c);
-        else printf("%dx^%d", c, p);
+        if(power == 0) printf("%d",coefficient);
+        else if(power == 1) printf("%dx",coefficient);
+        else printf("%dx^%d", coefficient, power);
 
         curr = curr->next;
     }
     printf("\n");
 }
 
-int main(void) {
+int main() 
+{
     equation f, g, result;
     create_a_equation(&f);
     create_a_equation(&g);
